@@ -16,11 +16,11 @@ jobs:
     services:
       postgres:
         # Docker Hub image
-        image: postgres
+        image: postgres:alpine
         # Provide the password for postgres
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: secret
           POSTGRES_DB: simple_bank
         # Set health checks to wait until postgres has started
         options: >-
@@ -35,9 +35,14 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.19
+    - name: Install golang-migrate
+      run: |
+        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.2/migrate.linux-amd64.deb | tar xvz
+        sudo mv migrate.linux-amd64 /usr/bin
+        which migrate
     
-    - name: Run Migrations
-      run: make migrateup
+    - name: Run Migration
+      run: make migratup
 
     - name: Test
       run: make test
