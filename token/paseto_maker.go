@@ -40,7 +40,6 @@ func (maker *PasetoMaker) CreateToken(username string, duration time.Duration) (
 func (maker *PasetoMaker) VerifyToken(token string) (*Claims, error) {
 	claims := &Claims{}
 	err := maker.paseto.Decrypt(token, maker.symmetricKey, claims, nil)
-	fmt.Println("err", err, claims.Username, claims.IssuedAt, claims.ExpiresAt)
 	if err != nil {
 		return nil, ErrExpiredToken
 	}
