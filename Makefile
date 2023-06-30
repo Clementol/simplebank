@@ -1,5 +1,5 @@
 postgres:
-	docker run --name master-class -p 5432:5432 -e POSTGRES_PASSWORD=secret -d postgres:alpine
+	docker run --name master-class --network bank-network -p 5432:5432 -e POSTGRES_PASSWORD=secret -d postgres:alpine
 createdb:
 	docker exec -it master-class createdb --username=postgres --owner=postgres simple_bank
 

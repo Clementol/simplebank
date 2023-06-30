@@ -14,6 +14,7 @@ import (
 func main() {
 	config, err := util.LoadConfig(".")
 	viper.WatchConfig()
+
 	if err != nil {
 		log.Fatal("cannot load config:", err)
 	}
