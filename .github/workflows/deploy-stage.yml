@@ -3,7 +3,7 @@ name: Deploy to Production
 
 on:
   workflow_run:
-    workflows: [Run Unit Tests]
+    workflows: [test]
     types: [completed]
   push:
     branches: ["master"]
@@ -19,7 +19,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
       - run: echo 'The triggering workflow failed'
-      
+
   build:
     name: Build image
     runs-on: ubuntu-latest
