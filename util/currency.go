@@ -1,6 +1,6 @@
 package util
 
-// constants for all supported currencies
+// constants for all supported currenciess
 const (
 	USD = "USD"
 	EUR = "EUR"
