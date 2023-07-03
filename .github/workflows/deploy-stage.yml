@@ -2,11 +2,8 @@
 name: Deploy to Production
 
 on:
-  workflow_run:
-    workflows: [Run Unit Tests]
-    types: [completed]
-  # push:
-  #   branches: ["master"]
+  push:
+    branches: ["master"]
 
 jobs:
   on-success:
