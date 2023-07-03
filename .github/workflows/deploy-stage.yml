@@ -20,7 +20,7 @@ jobs:
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
           repo: simplebank
           region: us-east-1
-          tags: latest,${{ github.sha }}
+          tags: ${{ github.sha }}
           create_repo: false
           image_scanning_configuration: true
           set_repo_policy: true
