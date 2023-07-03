@@ -6,16 +6,6 @@ on:
     branches: ["master"]
 
 jobs:
-  on-success:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
-      - run: echo 'The triggering workflow passed'
-  on-failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - run: echo 'The triggering workflow failed'
 
   build:
     name: Build image
@@ -30,7 +20,7 @@ jobs:
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
           repo: simplebank
           region: us-east-1
-          tags: ${{ github.sha }}
+          tags: latest,${{ github.sha }}
           create_repo: false
           image_scanning_configuration: true
           set_repo_policy: true
