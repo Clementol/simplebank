@@ -20,7 +20,7 @@ jobs:
           repo: simplebank
           region: us-east-1
           tags: ${{ github.sha }}
-          create_repo: true
+          create_repo: false
           image_scanning_configuration: true
           set_repo_policy: true
           repo_policy_file: repo-policy.json
