@@ -16,7 +16,8 @@ var (
 
 // Payload contains the payload data of the token
 type Claims struct {
-	Username string `json:"username"`
+	ID       uuid.UUID `json:"id"`
+	Username string    `json:"username"`
 	jwt.RegisteredClaims
 }
 
@@ -28,9 +29,9 @@ func NewClaims(username string, duration time.Duration) (*Claims, error) {
 	}
 
 	claims := &Claims{
+		ID:       tokenID,
 		Username: username,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ID:        tokenID.String(),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(duration)),
 		},
