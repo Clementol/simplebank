@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  mapUsers: |
+    - userarn: arn:aws:iam::717212044242:user/Clement
+      username: clement
+      groups:
+        - system:masters
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
